@@ -11,20 +11,17 @@ function App() {
   return (
     <>
       <Navbar />
-
       <Routes>
-        {/* ✅ لو راح على "/" رجعه تلقائيًا لـ /products */}
         <Route path="/" element={<Navigate to="/products" />} />
 
-        {/* ✅ صفحة المنتجات */}
         <Route path="/products" element={<ProductsPage />} />
 
-        {/* ✅ صفحة تسجيل الدخول */}
         <Route path="/login" element={<LoginPage />} />
 
-        {/* ✅ صفحة إنشاء حساب جديد */}
         <Route path="/signup" element={<SignupPage />} />
+
         <Route path="/order/:productId" element={<OrderPage />} />
+        
         <Route path="/my-orders" element={<OrdersPage />} />
 
       </Routes>

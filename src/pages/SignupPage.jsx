@@ -1,9 +1,11 @@
  import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext'; // ✅
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // ✅ هنا الاستخدام
 
   const [form, setForm] = useState({
     firstName: '',
@@ -27,6 +29,7 @@ const SignupPage = () => {
         // ✅ حفظ التوكن
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
+         login(response.data.username); // ✅ حدث الـ context
 
         alert('✅ Account created successfully!');
         navigate('/products'); // رجوع للرئيسية
